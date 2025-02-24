@@ -27,6 +27,26 @@ php artisan vendor:publish --tag="laravel-google-recaptcha-enterprise-views"
 
 ## Usage
 
+Create a recaptcha key in the Google Console:
+https://console.cloud.google.com/security/recaptcha
+
+Create a Service Account in the same project with the role: `reCAPTCHA Enterprise Agent` via:
+https://console.cloud.google.com/iam-admin/serviceaccounts
+
+Than add an key with the JSON type in that service account. And add the credentials from that JSON in your `.env`:
+```dotenv
+# Google Recaptcha (enterprise)
+GOOGLE_RECAPTCHA_SITEKEY="<recaptcha_id>"
+GOOGLE_RECAPTCHA_PROJECT_ID="<project_id>"
+RECAPTCHA_ENTERPRISE_PRIVATE_KEY_ID="<private_key_id>"
+RECAPTCHA_ENTERPRISE_PRIVATE_KEY="<private_key>"
+RECAPTCHA_ENTERPRISE_CLIENT_EMAIL="<client_email>"
+RECAPTCHA_ENTERPRISE_CLIENT_ID="<client_id>"
+
+# Optional
+GOOGLE_RECAPTCHA_SCORE_THRESHOLD=0.7
+```
+
 Add the Captcha Scripts tot the `<head>` of the page
 ```bladehtml
 <head>
