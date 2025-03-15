@@ -13,16 +13,16 @@ You can install the package via composer:
 composer require spaanproductions/laravel-google-recaptcha-enterprise
 ```
 
-You can publish the config file with:
+Optionally, you can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-google-recaptcha-enterprise-config"
+php artisan vendor:publish --tag="google-recaptcha-enterprise-config"
 ```
 
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-google-recaptcha-enterprise-views"
+php artisan vendor:publish --tag="google-recaptcha-enterprise-views"
 ```
 
 ## Usage
@@ -59,6 +59,15 @@ Use the recaptcha button instead of the submit button
 <x-recaptcha-submit-button class="custom-classes">
     Submit
 </x-recaptcha-submit-button>
+```
+
+Add the rule to your controller or FormRequest: 
+```php
+use SpaanProductions\LaravelGoogleRecaptchaEnterprise\Rules\GoogleRecaptchaRule;
+
+request()->validate([
+    'g-recaptcha-response' => ['required', new GoogleRecaptchaRule, 'exclude'],
+])
 ```
 
 ## Changelog
